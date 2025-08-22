@@ -10,6 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"
         defer></script>
+    <script id="debug-script" src="https://cdn.jsdelivr.net/gh/MickShannahan/style-debug@latest/debug.min.js"
+        defer></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
 
@@ -18,19 +20,88 @@
     <title>Miner</title>
 </head>
 
-<body>
-
-    <main class="contianer-fluid">
-        <div class="row">
+<body class="debug">
+    <!-- NOTE CHEESE MOON -------------------------------------------->
+    <header class="container-fluid">
+        <div class="row p-5 m-2">
             <div class="col d-flex justify-content-center">
-                <img onclick="" src="https://em-content.zobj.net/source/facebook/65/new-moon-symbol_1f311.png" alt="">
+                <div class="">
+                    <img onclick="mine()" src="https://em-content.zobj.net/source/facebook/65/new-moon-symbol_1f311.png"
+                        alt="">
+
+                </div>
 
             </div>
         </div>
 
+    </header>
+
+    <main class="container-fluid">
+        <div class="row p-1 border justify-items-center">
+            <!-- NOTE CLICK COUNT / CHEESE / TIMER  --------------------------->
+            <div class="col">
+                <div class="row p-1 gap-1border justify-content-center">
+                    <div class="col-3">
+                        <span id="mine"></span>
+                        Clicker Points
+                    </div>
+                    <div class="col-3">
+                        <span id="cheese"></span>
+                        Cheese Total
+                    </div>
+                    <div class="col-3">
+                        Timer
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <footer class="contianer-fluid">
+    <footer class="container-fluid">
+        <!-- NOTE UPGRADES / STATS ---------------------------------------->
+        <div class="row p-2 m-1 border justify-content-center">
+            <section>
+                <!-- STUB UPGRADES ---------------------------->
+                <div class="col-3 border">
+                    <button onclick="buyClickUpgrade()" id="pickaxe-button">
+                        pickaxe 10
+                    </button>
+                </div>
+                <div class="col-3 border">
+                    <button onclick="buyClickUpgrade()" id="drill-button">
+                        drill 10
+                    </button>
+                </div>
+                <div class="col-3">
+                    <button onclick="buyAutoMaticUpgrade()" id="rover-button"></button>
+                    Click Stats
+                </div>
+                <div class="col-3">
+                    <button onclick="buyAutoMaticUpgrade()" id="station-button"></button>
+                    Auto Stats
+                </div>
+
+            </section>
+            <!-- STUB STATS ----------------------------- -->
+            <section>
+                <div class="col border">
+                    <span id="pickaxe-stats"></span>
+
+
+                </div>
+                <div class="col border">
+                    <span id="drill-stats"></span>
+
+                </div>
+                <div id="rover-stats" class="col">
+
+                </div>
+                <div id="station-stats" class="col">
+
+                </div>
+
+            </section>
+        </div>
 
     </footer>
 
