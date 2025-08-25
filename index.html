@@ -40,9 +40,9 @@
         <div class="row p-1 border justify-items-center">
             <!-- NOTE CLICK COUNT / CHEESE / TIMER  --------------------------->
             <div class="col">
-                <div class="row p-1 gap-1border justify-content-center">
+                <div class="row p-1 gap-1 justify-content-center">
                     <div class="col-3">
-                        <p id="mine">Clicks: </p>
+                        <p id="clicks"></p>
 
                     </div>
                     <div class="col-3">
@@ -63,12 +63,12 @@
             <section>
                 <!-- STUB UPGRADES ---------------------------->
                 <div class="col-3 border">
-                    <button onclick="buyClickUpgrade()" id="pickaxe-button">
+                    <button onclick="buyClickUpgrade('pickaxe')" id="pickaxe-button">
                         pickaxe 10
                     </button>
                 </div>
                 <div class="col-3 border">
-                    <button onclick="buyDrillUpgrade()" id="drill-button">
+                    <button onclick="buyClickUpgrade('drill')" id="drill-button">
                         drill 10
                     </button>
                 </div>

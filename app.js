@@ -39,12 +39,13 @@ let automaticUpgrades = [
 ]
 
 
-
+// NOTE this should only be called when the img is clicked
 function mine() {
 
     cheese += 1;
     clickUpgrades.forEach((click) => {
         if (click.quantity >= 1) {
+            //FIXME click.quantity TIMES click.bonus
             cheese += click.bonus
 
         }
@@ -52,7 +53,6 @@ function mine() {
     })
 
     drawCheese()
-
     drawAutoUpgrades()
     drawButtonUpgrades()
 
@@ -60,60 +60,37 @@ function mine() {
 
 
 function buyClickUpgrade() {
-    // for (let i = 0; i < clickUpgrades.length; i++) {
 
-    let click = clickUpgrades[0]
-    clickUpgrades.forEach((click) => {
-        if (cheese >= click.price) {
-            click.quantity += 1;
-            cheese -= click.price;
-            click.price += click.price;
-            click.bonus += click.bonus;
-        }
+    // TODO use a FIND to get the correct upgrade out of the array (reference getAnimal)
+    // TODO we don't need the double for loop, but all of the logic in your if statement is correct
+    for (let i = 0; i < clickUpgrades.length; i++) {
 
-    })
-    // }
+        // let click = clickUpgrades[i]
+        clickUpgrades.forEach((click) => {
+            if (cheese >= click.price) {
+                click.quantity += 1;
+                cheese -= click.price;
+                click.price += click.price;
+            }
+        })
+    }
 
     drawCheese()
-
     drawButtonUpgrades()
-    mine()
 
 }
 
 
-// NOTE why did this function grab drill, but the function above only grabbed pickaxe
-function buyDrillUpgrade() {
-
-
-    let click = clickUpgrades[1]
-    clickUpgrades.forEach((click) => {
-        if (cheese >= click.price) {
-            click.quantity += 1;
-            cheese -= click.price;
-            click.price += click.price;
-            click.bonus += click.bonus;
-        }
-
-    })
-
-
-    drawCheese()
-
-    drawButtonUpgrades()
-    mine()
-
-}
-// NOTE talk to Mick ------------------------------------------------------------------
 
 
 function buyAutoMaticUpgrade() {
 
-    let a = automaticUpgrades[0];
+    // TODO reference buyClickUpgrade for refactoring this
+
     automaticUpgrades.forEach((a) => {
         if (cheese >= a.price) {
             a.quantity += 1;
-            cheese - a.price;
+            cheese -= a.price;
             a.price += a.price;
             a.bonus += a.bonus;
 
@@ -124,6 +101,7 @@ function buyAutoMaticUpgrade() {
 
     drawCheese()
     drawAutoUpgrades()
+    // TODO call drawcpc
 
 }
 
@@ -143,46 +121,45 @@ function buyAutoMaticUpgrade() {
 
     drawCheese()
     drawAutoUpgrades()
+    // TODO call drawcpi
+
 
 }
 
-// let currentClicks = 0;
-// // GO LOOK AT ZOO KEEPER CPC 
-// function clickWeight() {
-
-//     let currentClicks = mine();
-//     clickUpgrades.forEach((click) => {
-//         if (click.quantity >= 1) {
-//             cheese += click.bonus
-
-//         }
+// function collectAuto() {
+//     let autoPayout = 0
+//     automaticUpgrades.forEach((a) => {
+// TODO a.bonus TIMES a.quantity
+//         cheese += a.bonus
 
 //     })
-
-
-//     drawCheese()
-
-//     drawButtonUpgrades()
-//     mine()
-
+//     drawAutoUpgrades()
 // }
 
+
+// TODO you need to call your collect auto function here instead of buying
+setInterval(buyAutoMaticUpgrade, 1000 * 3)
 
 
 // VISUALIZERS -------------------------------------------------
 
 let cheeseElm = document.getElementById("cheese")
+let clickElm = document.getElementById(`clicks`)
 
 
 function drawCheese() {
-    cheeseElm.innerHTML = cheese
+    cheeseElm.innerHTML = `${cheese}`
     console.log('🧀', cheese)
 }
 
-let clicks = 0;
-function drawCPC() {
 
+function drawCPC() {
+    let cpc = 0
+    // TODO looop over your clickUpgrades array, and add each upgrade's bonus * quantity to cpc
+    clickElm.innerHTML = `Clicks: ${cpc}`
 }
+
+// TODO write a draw cpi function, use drawCPC as a reference
 
 function drawButtonUpgrades() {
     clickUpgrades.forEach((u) => {
@@ -205,15 +182,17 @@ function drawAutoUpgrades() {
 }
 
 
-mine()
+
+// ANCHOR page load
+// mine()
 // clickWeight()
 drawCheese()
 drawButtonUpgrades()
 drawAutoUpgrades()
-buyClickUpgrade()
-buyDrillUpgrade()
+// buyClickUpgrade()
+// buyDrillUpgrade()
 // buyClickUpgrade0()
 // buyClickUpgrade1()
-buyAutoMaticUpgrade()
-buyAutoMaticUpgrade()
+// buyAutoMaticUpgrade()
+// buyAutoMaticUpgrade()
 drawCPC()
